@@ -20,7 +20,10 @@ ScavTrap::ScavTrap(std::string name)
 ScavTrap::ScavTrap(const ScavTrap &other)
 {
     std::cout << "ScavTrap's copy constructor called" << std::endl;
-    *this = other;
+    this->_name = other._name;
+    this-> _hitPoints = other._hitPoints;
+    this->_energyPoints = other._energyPoints;
+    this->_attackDamage = other._attackDamage;
     return;
 }
 

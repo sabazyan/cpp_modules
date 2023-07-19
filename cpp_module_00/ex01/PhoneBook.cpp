@@ -2,13 +2,13 @@
 
 PhoneBook::PhoneBook(void)
 {
-	std::cout << "PhoneBook's constructor called" << std::endl;
+	// std::cout << "PhoneBook's constructor called" << std::endl;
 	return ;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "PhoneBook's destuctor called" << std::endl;
+	// std::cout << "PhoneBook's destuctor called" << std::endl;
 	return ;
 }
 
@@ -18,7 +18,9 @@ void PhoneBook::AddContact(void)
 	
 	Label_firstName:
 	std::cout << "First name: ";
-	std::cin >> temp[0];
+	getline(std::cin, temp[0]);
+	if(std::cin.eof())
+		return ;
 	if (CheckLetters(temp[0]))
 	{
 		std::cout << "Invalid First name" << std::endl;
@@ -26,17 +28,21 @@ void PhoneBook::AddContact(void)
 	}
 	Label_lastName:
 	std::cout << "Last name: ";
-	std::cin >> temp[1];
+	getline(std::cin, temp[1]);
+	if(std::cin.eof())
+		return ;
 	if (CheckLetters(temp[1]))
 	{
 		std::cout << "Invalid Last name" << std::endl;
 		goto Label_lastName;
 	}
 	std::cout << "Nickname: ";
-	std::cin >> temp[2];
+	getline(std::cin, temp[2]);
+	if(std::cin.eof())
+		return ;
 	Label_phoneNumber:
 	std::cout << "Phone number: ";
-	std::cin >> temp[3];
+	getline(std::cin, temp[3]);
 	if(std::cin.eof())
 		return ;
 	if (CheckDigits(temp[3]))
@@ -45,7 +51,9 @@ void PhoneBook::AddContact(void)
 		goto Label_phoneNumber;
 	}
 	std::cout << "Darkest secret: ";
-	std::cin >> temp[4];
+	getline(std::cin, temp[4]);
+	if(std::cin.eof())
+		return ;
 	if (contactIndex == 8)
 		contactIndex = 0;
 	Contacts[contactIndex].SetFirstName(temp[0]);
@@ -74,7 +82,7 @@ void PhoneBook::SearchContact(void)
 		}
 	}
 	std::cout << "Choose a valid index: ";
-	std::cin >> inputedIndex;
+	getline(std::cin, inputedIndex);
 	if(std::cin.eof())
 		return ;
 	if (CheckDigits(inputedIndex))
@@ -104,7 +112,9 @@ void PhoneBook::SearchContact(void)
 
 int PhoneBook::CheckLetters(std::string name)
 {
-	for (int i = 0; i < name.length(); ++i)
+	int len = name.length();
+
+	for (int i = 0; i < len; ++i)
 		if ((name[i] < 65) || (name[i] > 90 && name[i] < 97) || (name[i] > 122))
 			return -1;
 	return 0;
@@ -112,7 +122,9 @@ int PhoneBook::CheckLetters(std::string name)
 
 int PhoneBook::CheckDigits(std::string number)
 {
-	for (int i = 0; i < number.length(); ++i)
+	int len = number.length();
+
+	for (int i = 0; i < len; ++i)
 		if (number[i] < 48 || number[i] > 57)
 			return -1;
 	return 0;

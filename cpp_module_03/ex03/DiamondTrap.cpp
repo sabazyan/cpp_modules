@@ -13,7 +13,7 @@ DiamondTrap::DiamondTrap(std::string name)
 DiamondTrap::DiamondTrap(const DiamondTrap &other)
 {
     std::cout << "DiamondTrap's copy constructor called" << std::endl;
-    *this = other;
+    this->_name = other._name;
     return;
 }
 
