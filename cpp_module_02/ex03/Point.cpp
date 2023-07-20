@@ -32,12 +32,12 @@ Point::~Point(void)
     return ;
 }
 
-Fixed Point::get_x(void) const
+Fixed Point::getX(void) const
 {
     return x;
 }
 
-Fixed Point::get_y(void) const
+Fixed Point::getY(void) const
 {
     return y;
 }

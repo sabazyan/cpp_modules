@@ -21,39 +21,50 @@ void PhoneBook::AddContact(void)
 	getline(std::cin, temp[0]);
 	if(std::cin.eof())
 		return ;
-	if (CheckLetters(temp[0]))
+	if (temp[0] == "" || CheckLetters(temp[0]))
 	{
 		std::cout << "Invalid First name" << std::endl;
 		goto Label_firstName;
 	}
+
 	Label_lastName:
 	std::cout << "Last name: ";
 	getline(std::cin, temp[1]);
 	if(std::cin.eof())
 		return ;
-	if (CheckLetters(temp[1]))
+	if (temp[1] == "" || CheckLetters(temp[1]))
 	{
 		std::cout << "Invalid Last name" << std::endl;
 		goto Label_lastName;
 	}
+
+	Label_nickname:
 	std::cout << "Nickname: ";
 	getline(std::cin, temp[2]);
 	if(std::cin.eof())
 		return ;
+	if (temp[2] == "")
+		goto Label_nickname;
+
 	Label_phoneNumber:
 	std::cout << "Phone number: ";
 	getline(std::cin, temp[3]);
 	if(std::cin.eof())
 		return ;
-	if (CheckDigits(temp[3]))
+	if (temp[3] == "" || CheckDigits(temp[3]))
 	{
 		std::cout << "Invalid Phone number" << std::endl;
 		goto Label_phoneNumber;
 	}
+
+	Label_dark:
 	std::cout << "Darkest secret: ";
 	getline(std::cin, temp[4]);
 	if(std::cin.eof())
 		return ;
+	if (temp[4] == "")
+		goto Label_dark;
+
 	if (contactIndex == 8)
 		contactIndex = 0;
 	Contacts[contactIndex].SetFirstName(temp[0]);
@@ -92,6 +103,7 @@ void PhoneBook::SearchContact(void)
 	}
 	std::stringstream ss(inputedIndex);
 	ss >> index;
+	// std::cout << index << "<- index, contactIndex ->" << contactIndex << std::endl << std::endl;
 	if (index > contactIndex)
 	{
 		std::cout << "There is no contact with index " << index << std::endl;
