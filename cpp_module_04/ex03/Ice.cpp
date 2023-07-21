@@ -1,6 +1,6 @@
 #include "Ice.hpp"
 
-Ice::Ice(std::string const &type)
+Ice::Ice(std::string const &)
 {
     std::cout << "Constructor with parameter" << std::endl;
     _type = "ice";

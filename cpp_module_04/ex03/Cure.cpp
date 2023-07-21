@@ -1,6 +1,6 @@
 #include "Cure.hpp"
 
-Cure::Cure(std::string const &type)
+Cure::Cure(std::string const &)
 {
     std::cout << "Constructor with parameter" << std::endl;
     _type = "cure";

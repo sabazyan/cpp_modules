@@ -1,9 +1,12 @@
 #ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#define AMATERIA_HPP
 #include <iostream>
 #include "ICharacter.hpp"
 
-class AMateria {
+class ICharacter;
+
+class AMateria
+{
     public:
         AMateria(void);
         AMateria(std::string const &type);
