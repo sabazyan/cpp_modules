@@ -1,37 +1,37 @@
 #include "Ice.hpp"
 
-Ice::Ice(std::string const &)
+Ice::Ice() : AMateria("ice")
 {
-    std::cout << "Constructor with parameter" << std::endl;
-    _type = "ice";
-    return ;
+    std::cout << "Ice Default constructor" << std::endl;
 }
 
-Ice::Ice(const Ice &other)
+Ice::Ice(const Ice &other) : AMateria(other)
 {
-    std::cout << "Copy constructor" << std::endl;
-    _type = other._type;
-    return ;
+    std::cout << "Ice Copy constructor" << std::endl;
 }
 
 Ice &Ice::operator = (const Ice &other)
 {
-    std::cout << "Assignment operator" << std::endl;
+    std::cout << "Ice Assignment operator" << std::endl;
     if (this != &other)
     {
-        _type = other._type;
+        AMateria::operator=(other);
     }
     return *this;
 }
 
 Ice::~Ice(void)
 {
-    std::cout << "Destructor" << std::endl;
-    return ;
+    std::cout << "Ice Destructor" << std::endl;
+}
+
+AMateria *Ice::clone() const
+{
+    Ice *ice = new Ice;
+    return ice;
 }
 
 void Ice::use(ICharacter &target)
 {
     std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
-    return ;
 }

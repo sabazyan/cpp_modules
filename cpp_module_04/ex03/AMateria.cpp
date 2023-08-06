@@ -1,27 +1,24 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(void)
+AMateria::AMateria(void) : _type("Default type")
 {
-    std::cout << "Default constructor" << std::endl;
-    return ;
+    std::cout << "AMateria Default constructor" << std::endl;
 }
 
 AMateria::AMateria(std::string const &type) : _type(type)
 {
-    std::cout << "Constructor with parameter" << std::endl;
-    return ;
+    std::cout << "AMateria Constructor with parameter" << std::endl;
 }
 
 AMateria::AMateria(const AMateria &other)
 {
-    std::cout << "Copy constructor" << std::endl;
+    std::cout << "AMateria Copy constructor" << std::endl;
     _type = other._type;
-    return ;
 }
 
 AMateria &AMateria::operator = (const AMateria &other)
 {
-    std::cout << "Assignment operator" << std::endl;
+    std::cout << "AMateria Assignment operator" << std::endl;
     if (this != &other)
     {
         _type = other._type;
@@ -31,8 +28,7 @@ AMateria &AMateria::operator = (const AMateria &other)
 
 AMateria::~AMateria(void)
 {
-    std::cout << "Destructor" << std::endl;
-    return ;
+    std::cout << "AMateria Destructor" << std::endl;
 }
 
 std::string const &AMateria::getType(void) const
@@ -43,5 +39,4 @@ std::string const &AMateria::getType(void) const
 void AMateria::use(ICharacter &target)
 {
     std::cout << target.getName() << std::endl;
-    return ;
 }

@@ -8,14 +8,15 @@ int main(int argc, char **argv)
 		return 0;
 	}
 	std::ifstream file1;
-	std::ofstream file2;
 	file1.open(argv[1]);
-	file2.open("outputFile.txt");
-	if (!file1.is_open() || !file2.is_open())
+	if (!file1.is_open())
 	{
-		std::cout << "Can not open file(s)" << std::endl;
+		std::cout << "Can not open file" << std::endl;
 		return 0;
 	}
+	std::ofstream file2;
+	std::string fileName = (std::string)argv[1] + ".replace";
+	file2.open(fileName);
 	int argv2_len;
 	for (int i = 0; argv[2][i]; ++i)
 	{

@@ -7,8 +7,9 @@ class Character : public ICharacter
 {
     public:
         Character(void);
-        Character(const Character &);
-        Character &operator = (const Character &);
+        Character(std::string const &name);
+        Character(const Character &other);
+        Character &operator = (const Character &other);
         ~Character(void);
 
         std::string const &getName() const;
@@ -16,7 +17,11 @@ class Character : public ICharacter
         void unequip(int idx);
         void use(int idx, ICharacter &target);
     private:
-        std::string name;
+        std::string _name;
+        AMateria *materias[4];
+        AMateria **garbage;
+        int garbage_index;
+        int garbage_size;
 };
 
 #endif
